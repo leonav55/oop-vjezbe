@@ -20,7 +20,7 @@ void inputMatrix(double** matrix, int rows, int cols) {
 void generateMatrix(double** matrix, int rows, int cols, double a, double b) {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            matrix[i][j] = a;  // Jednostavno postavlja sve na a (npr. donju granicu)
+            matrix[i][j] = a;  
         }
     }
 }
