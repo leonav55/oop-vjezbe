@@ -7,9 +7,7 @@
 #include <cmath>
 #include <string>
 
-//
-// ===== 1. RAD S VEKTOROM BROJEVA =====
-//
+
 namespace number_utils {
 
 bool is_power_of_two(int x) {
@@ -18,7 +16,6 @@ bool is_power_of_two(int x) {
 }
 
 void process_numbers(std::vector<int>& v) {
-    // prvi neparni
     auto firstOdd = std::find_if(v.begin(), v.end(),
         [](int x) { return x % 2 != 0; });
 
@@ -27,13 +24,11 @@ void process_numbers(std::vector<int>& v) {
     else
         std::cout << "Nema neparnih brojeva\n";
 
-    // broj neparnih
     int oddCount = std::count_if(v.begin(), v.end(),
         [](int x) { return x % 2 != 0; });
 
     std::cout << "Broj neparnih: " << oddCount << "\n";
 
-    // prosjek neparnih
     int oddSum = std::accumulate(v.begin(), v.end(), 0,
         [](int sum, int x) {
             return x % 2 != 0 ? sum + x : sum;
@@ -44,11 +39,9 @@ void process_numbers(std::vector<int>& v) {
         std::cout << "Prosjek neparnih: " << avg << "\n";
     }
 
-    // zamjena potencija broja 2 sa 2
     std::replace_if(v.begin(), v.end(),
         is_power_of_two, 2);
 
-    // ispis: parni pa neparni, sortirani
     std::vector<int> even, odd;
     std::copy_if(v.begin(), v.end(), std::back_inserter(even),
         [](int x) { return x % 2 == 0; });
@@ -68,11 +61,7 @@ void process_numbers(std::vector<int>& v) {
     std::cout << "\n";
 }
 
-} // namespace number_utils
-
-//
-// ===== 2. MATH_UTILS =====
-//
+} 
 namespace math_utils {
 
 struct Point {
@@ -98,11 +87,7 @@ Point centroid(const std::vector<Point>& points) {
     };
 }
 
-} // namespace math_utils
-
-//
-// ===== 3. STUDENT_RECORDS =====
-//
+} 
 namespace student_records {
 
 struct Student {
@@ -119,19 +104,13 @@ int bodovi_u_ocjenu(int bodovi) {
     return 5;
 }
 
-} // namespace student_records
-
-//
-// ===== MAIN =====
-//
+} 
 int main() {
 
-    // ===== 1. BROJEVI =====
     std::cout << "=== BROJEVI ===\n";
     std::vector<int> brojevi = {1, 2, 3, 4, 5, 8, 16, 7, 9, 10};
     number_utils::process_numbers(brojevi);
 
-    // ===== 2. TOCKE =====
     std::cout << "\n=== TOCKE ===\n";
     std::ifstream file("points.txt");
     std::vector<math_utils::Point> points(
@@ -171,7 +150,6 @@ int main() {
     std::copy(points.begin(), points.end(),
         std::ostream_iterator<math_utils::Point>(std::cout, "\n"));
 
-    // ===== 3. STUDENTI =====
     std::cout << "\n=== STUDENTI ===\n";
     std::ifstream sf("studenti.txt");
     std::vector<student_records::Student> students(
